@@ -49,10 +49,10 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.logout') }}" class="nav-link">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
-                  لینک ساده
+                  خروج
                   <span class="right badge badge-danger">جدید</span>
                 </p>
               </a>
