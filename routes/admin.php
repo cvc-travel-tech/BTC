@@ -19,10 +19,8 @@ Route::group(['prefix' => 'backend', 'as' => 'admin.'], function () {
         Route::get('/', function () {
             return view('admin.home');
         });
-
-        Route::get('products-datatable', 'ProductController@datatable')->name('product.datatable');
-        Route::get('products-data', 'ProductController@productsList')->name('product.data');
-
+        Route::resource('product', 'ProductController');
+        Route::get('products/data', 'ProductController@productsList')->name('product.data');
         Route::any('logout', 'AdminAuthController@Logout')->name('logout');
     });
 });
