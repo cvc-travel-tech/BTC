@@ -15,12 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('example', ['example'=>'exampl@index', 'as'=>'exampl.index']);
+Route::get('example', ['example' => 'exampl@index', 'as' => 'exampl.index']);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('products-datatable', 'ProductController@datatable')->name('product.datatable');
-Route::get('products-data', 'ProductController@productsList')->name('product.data');

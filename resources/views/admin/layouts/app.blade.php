@@ -10,11 +10,17 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/font-awesome/css/font-awesome.min.css')}}">
   <!-- Theme style -->
+
+
+
   <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- bootstrap rtl -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/bootstrap-rtl.min.css')}}">
+
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
   <!-- template rtl version -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/custom-style.css')}}">
 </head>
@@ -50,7 +56,7 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-          
+
 
                     @yield('content')
                 </div><!-- /.container-fluid -->
@@ -66,7 +72,10 @@
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="{{ asset('admin/dist/js/adminlte.min.js')}}"></script>
+    @yield('script')
 </body>
 </html>
