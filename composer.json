@@ -13,8 +13,12 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "spatie/laravel-permission": "^3.3",
+<<<<<<< HEAD
         "yajra/laravel-datatables": "^1.0",
         "yajra/laravel-datatables-oracle": "^9.8"
+=======
+        "yajra/laravel-datatables-oracle": "~9.0"
+>>>>>>> b6a00c00182772e40c1a4390af37f4ccd4ae49ee
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
