@@ -1,21 +1,19 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
+
     public function run()
     {
+        Model::unguard();
+
         DB::table('admins')->insert([
             'name' => Str::random(10),
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('password'),
+            'email' => Str::random(10) . '@gmail.com',
+            'password' => bcrypt('secret'),
         ]);
-        // $this->call(UsersTableSeeder::class);
     }
 }
