@@ -1,66 +1,78 @@
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">پنل مدیریت</span>
-    </a>
+		<!-- Main sidebar -->
+			<div class="sidebar sidebar-main sidebar-fixed">
+				<div class="sidebar-content">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div>
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="https://secure.gravatar.com/avatar/5ffa2a1ffeb767c60ab7e1052e385d5c?s=52&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">محمدرضا عطوان</a>
-          </div>
-        </div>
+					<!-- User menu -->
+					<div class="sidebar-user">
+						<div class="category-content">
+							<div class="media">
+								<a href="#" class="media-left"><img src="admin/images/image.png" class="img-circle img-sm" alt=""></a>
+								<div class="media-body">
+									<span class="media-heading text-semibold">Victoria Baker</span>
+									<div class="text-size-mini text-muted">
+										<i class="icon-pin text-size-small"></i> &nbsp;Santa Ana, CA
+									</div>
+								</div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fa fa-dashboard"></i>
-                <p>
-                  صفحات شروع
-                  <i class="right fa fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link active">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>صفحه فعال</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>صفحه غیر فعال</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('admin.logout') }}" class="nav-link">
-                <i class="nav-icon fa fa-th"></i>
-                <p>
-                  خروج
-                  <span class="right badge badge-danger">جدید</span>
-                </p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+								<div class="media-right media-middle">
+									<ul class="icons-list">
+										<li>
+											<a href="#"><i class="icon-cog3"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /user menu -->
+
+
+					<!-- Main navigation -->
+					<div class="sidebar-category sidebar-category-visible">
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-main navigation-accordion">
+
+								<!-- Main -->
+								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<li>
+									<a href="#"><i class="icon-stack"></i> <span>Starter kit</span></a>
+									<ul>
+										<li><a href="horizontal_nav.html">Horizontal navigation</a></li>
+										<li><a href="1_col.html">1 column</a></li>
+										<li><a href="2_col.html">2 columns</a></li>
+										<li>
+											<a href="#">3 columns</a>
+											<ul>
+												<li><a href="3_col_dual.html">Dual sidebars</a></li>
+												<li><a href="3_col_double.html">Double sidebars</a></li>
+											</ul>
+										</li>
+										<li><a href="4_col.html">4 columns</a></li>
+										<li>
+											<a href="#">Detached layout</a>
+											<ul>
+												<li><a href="detached_left.html">Left sidebar</a></li>
+												<li><a href="detached_right.html">Right sidebar</a></li>
+												<li><a href="detached_sticky.html">Sticky sidebar</a></li>
+											</ul>
+										</li>
+										<li><a href="layout_boxed.html">Boxed layout</a></li>
+										<li class="navigation-divider"></li>
+										<li><a href="layout_navbar_fixed_main.html">Fixed top navbar</a></li>
+										<li><a href="layout_navbar_fixed_secondary.html">Fixed secondary navbar</a></li>
+										<li><a href="layout_navbar_fixed_both.html">Both navbars fixed</a></li>
+										<li class="active"><a href="layout_fixed.html">Fixed layout</a></li>
+									</ul>
+								</li>
+								<li><a href="changelog.html"><i class="icon-list-unordered"></i> <span>Changelog</span></a></li>
+								<!-- /main -->
+
+							</ul>
+						</div>
+					</div>
+					<!-- /main navigation -->
+
+				</div>
+			</div>
+			<!-- /main sidebar -->

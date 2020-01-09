@@ -10,9 +10,35 @@ use App\Http\Controllers\Controller;
 class ProductController extends Controller
 {
 
+    private $request;
+    private $repo;
+    protected $activity;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+        // $this->repo = $repo;
+        // $this->activity = $activity;
+        // $this->user = $user;
+        // $this->middleware('feature.available:todo');
+    }
+
     public function productsList()
     {
-        return DataTables::of(Product::query())->make(true);
+        $data = Product::latest()->get();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     /**
@@ -22,7 +48,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        if ($this->request->ajax())
+            return $this->productsList();
+
         return view('admin.products.index');
     }
 
