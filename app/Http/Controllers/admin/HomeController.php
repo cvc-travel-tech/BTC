@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
+    private $data;
+
     /**
      * Create a new controller instance.
      *
@@ -13,7 +16,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->data = [
+            // 'module' => 'Home',
+            // 'module-url' => route('admin.destination.index'),
+            // 'create-url' => route('admin.destination.create'),
+        ];
     }
 
     /**
@@ -23,6 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $data = $this->data;
+        // $data['page-doc'] = "index";
+        return view('admin.home', compact('data'));
     }
 }

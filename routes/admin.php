@@ -16,16 +16,15 @@ Route::group(['prefix' => 'backend', 'as' => 'admin.'], function () {
     Config::set('auth.defines', 'admin');
     Route::get('login', 'AdminAuthController@Login');
     Route::post('login', 'AdminAuthController@doLogin')->name('dologin');
-   
-    Route::group(['middleware' => 'admin:admin'], function () {
-        Route::get('/', function () {
-            return view('admin.home');
-        });
 
+    Route::group(['middleware' => 'admin:admin'], function () {
+        Route::get('/', "HomeController@index")->name('home');
         Route::resource('product', 'ProductController');
-        Route::get('products/data', 'ProductController@productsList')->name('product.data');
+        Route::resource('destination', 'DestinationController');
+        Route::get('products/data', 'DestinationController@reposList')->name('product.data');
         Route::any('logout', 'AdminAuthController@Logout')->name('logout');
         Route::resource('Blog', 'BlogController');
-
+        Route::post('media/store', 'MediaController@store')->name('media.store');
     });
+    Route::get('media/get', 'MediaController@getImages')->name('media.getImages');
 });

@@ -1,18 +1,21 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                        {{-- data --}}
-                </div>
+    <!-- Highlighting rows and columns -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Highlighting rows and columns</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
             </div>
         </div>
-            <!-- /.col-md-6 -->
-        <!-- /.col-md-6 -->
+        <div class="panel-body">
+        </div>
     </div>
-    <!-- /.row -->
 @endsection
 @section('script')
 

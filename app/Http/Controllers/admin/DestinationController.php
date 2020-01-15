@@ -2,43 +2,38 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Destination;
-use DataTables;
+use App\DataTables\DestinationDatatables;
 use App\Http\Controllers\Controller;
+use App\Repositories\DestinationRepository;
+use Illuminate\Http\Request;
 
 class DestinationController extends Controller
 {
 
-
-
     private $request;
-    // private $repo;
-
+    private $repo;
+    private $data;
+    private $datatable;
     /**
      * Instantiate a new controller instance.
      *
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, DestinationDatatables $datatable, DestinationRepository $repo)
     {
         $this->request = $request;
+        $this->repo = $repo;
+        $this->datatable = $datatable;
+        $this->data = [
+            'module' => 'Destination',
+            'module-url' => route('admin.destination.index'),
+            'create-url' => route('admin.destination.create'),
+        ];
+
         // $this->user = $user;
         // $this->middleware('feature.available:todo');
     }
 
-    public function reposList()
-    {
-        $data = Destination::latest()->get();
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-                $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-                return $btn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
 
     /**
      * Display a listing of the resource.
@@ -47,10 +42,11 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        if ($this->request->ajax())
-            return $this->reposList();
 
-        return view('admin.Destination.index');
+        $data = $this->data;
+        $datatable = $this->datatable;
+        $data['page-doc'] = "index";
+        return $datatable->render('admin.Destination.index', compact('data'));
     }
 
     /**
@@ -60,8 +56,28 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.products.create');
+        $form = [
+            'name' => [
+                'type' => 'text',
+                'tital' => 'Name',
+                'placeholder' => 'Pick a size...',
+            ],
+            'description' => [
+                'type' => 'ckeditor',
+                'tital' => 'description',
+                'placeholder' => 'Pick a size...',
+
+            ],
+            'tmp_img' => [
+                'type' => 'img',
+                'placeholder' => 'Pick a size...',
+            ],
+
+        ];
+
+        $data = $this->data;
+        $data['page-doc'] = "Create";
+        return view('admin.Destination.create', compact('data', 'form'));
     }
 
     /**
@@ -73,6 +89,8 @@ class DestinationController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $this->repo->create($this->request->all());
+        return redirect()->route('admin.destination.index')->with('successMsg', 'Property is updated .');
     }
 
     /**

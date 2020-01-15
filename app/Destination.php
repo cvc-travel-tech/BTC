@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Destination extends Model 
+class Destination extends Model implements HasMedia
 {
+    use HasMediaTrait;
 
     protected $table = 'destinations';
     public $timestamps = true;
@@ -13,12 +16,12 @@ class Destination extends Model
 
     public function tmpImg()
     {
-        return $this->belongsTo('App\Image', 'tmp_img');
+        return $this->belongsTo('App\Images', 'tmp_img');
     }
 
     public function Img()
     {
-        return $this->belongsTo('App\Image', 'img');
+        return $this->belongsTo('App\Images', 'img');
     }
 
     public function Hotels()
@@ -30,5 +33,4 @@ class Destination extends Model
     {
         return $this->belongsToMany('App\Package', 'package_id');
     }
-
 }
