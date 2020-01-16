@@ -13,7 +13,9 @@ class Destination extends Model implements HasMedia
     protected $table = 'destinations';
     public $timestamps = true;
     protected $fillable = array('description', 'name', 'tmp_img', 'img', 'locations');
-
+    protected $casts = [
+        'locations' => 'array', // Will convarted to (Array)
+    ];
     public function tmpImg()
     {
         return $this->belongsTo('App\Images', 'tmp_img');

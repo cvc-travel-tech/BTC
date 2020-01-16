@@ -107,7 +107,8 @@ class DestinationRepository
             'name' => isset($params['name']) ? $params['name'] : null,
             'description' => isset($params['description']) ? $params['description'] : null,
             'tmp_img' => isset($params['tmp_img']) ? $params['tmp_img'] : null,
-            'img' => isset($params['tmp_img']) ? $params['tmp_img'] : null,
+            'img' => isset($params['img']) ? $params['img'] : null,
+            'locations' => isset($params['location_tital']) ? $params['location_tital'] : null,
         ];
         // if ($action === 'create') {
         //     $formatted['user_id'] = \Auth::user()->id;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\DestinationDatatables;
 use App\Http\Controllers\Controller;
 use App\Repositories\DestinationRepository;
+use App\Http\Requests\DestinationRequest;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
@@ -68,12 +69,41 @@ class DestinationController extends Controller
                 'placeholder' => 'Pick a size...',
 
             ],
-            'tmp_img' => [
+            'img' => [
                 'type' => 'img',
+                'tital' => 'Img',
+                'width' => '12',
                 'placeholder' => 'Pick a size...',
             ],
+            'tmp_img' => [
+                'type' => 'img',
+                'tital' => 'Tmp Img',
+                'width' => '4',
+                'placeholder' => 'Pick a size...',
+            ],
+            'locations[]' => [
+                'type' => 'json',
+                'tital' => 'Tmp Img',
+                'width' => '4',
+                'inputs' => [
+                    'location.tital[]' => [
+                        'type' => 'text',
+                        'tital' => 'Tmp Img',
+                        'width' => '30%',
+                        'placeholder' => 'Pick a size...',
+                    ],
+                    'location.description[]' => [
+                        'type' => 'ckeditor',
+                        'tital' => 'description',
+                        'width' => '70%',
+                        'placeholder' => 'Pick a size...',
 
+                    ],
+                ],
+                'placeholder' => 'Pick a size...',
+            ],
         ];
+
 
         $data = $this->data;
         $data['page-doc'] = "Create";
@@ -86,10 +116,10 @@ class DestinationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DestinationRequest $request)
     {
         //
-        $data = $this->repo->create($this->request->all());
+        $data = $this->repo->create($request->all());
         return redirect()->route('admin.destination.index')->with('successMsg', 'Property is updated .');
     }
 

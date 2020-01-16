@@ -30,5 +30,6 @@ class FormServiceProvider extends ServiceProvider
         Form::component('bsText', 'admin.Form.text', ['name', 'value' => null, 'attributes' => []]);
         Form::component('ckeditor', 'admin.Form.ckeditor', ['name', 'value' => null, 'attributes' => []]);
         Form::component('img', 'admin.Form.img', ['name', 'value' => null, 'attributes' => []]);
+        Form::component('json', 'admin.Form.json', ['name', 'inputs'  => [], 'value' => null, 'attributes' => []]);
     }
 }

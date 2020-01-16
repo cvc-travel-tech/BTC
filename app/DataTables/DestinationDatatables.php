@@ -51,7 +51,7 @@ class DestinationDatatables extends DataTable
 
             ->parameters([
                 'responsive' => true,
-                'autoWidth' => false,
+                'autoWidth' => true,
                 // 'serverSide' =>  false
 
                 // 'lengthMenu' => [
@@ -90,7 +90,7 @@ class DestinationDatatables extends DataTable
             //     ->addClass('text-center'),
             Column::make('id'),
             Column::make('name'),
-            Column::make('description'),
+            // Column::make('description'),
             Column::make('created_at'),
             Column::make('updated_at'),
         ];

@@ -18,5 +18,7 @@ if (!function_exists('getInput')) {
             return Form::ckeditor($name, $value, $attributes);
         else if ($attributes['type'] == 'img')
             return Form::img($name, $value, $attributes);
+        else if ($attributes['type'] == 'json')
+            return Form::json($name, $attributes['inputs'], $value, $attributes);
     }
 }

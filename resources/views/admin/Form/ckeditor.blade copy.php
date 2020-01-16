@@ -11,7 +11,7 @@ $tital= $attributes['tital'];
 <div class="form-group">
     {!! Form::label($name, $tital, ['class' => 'control-label col-lg-3']) !!}
     <div class="col-lg-12">
-        {!! Form::textarea($name, $value, ['class'=>'form-control ckeditor' ,'id' => 'ckeditor-${i}'], $attributes) !!}
+        {!! Form::textarea($name, $value, ['class'=>'form-control ckeditor'], $attributes) !!}
         @error($name)
             <label id="{{$name}}-error" class="validation-error-label" for="{{$name}}">{{ $message }}</label>
         @enderror

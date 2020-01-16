@@ -1,16 +1,18 @@
 <!-- Basic text input -->
 <?php
 $tital= null;
+$width= 12;
 $modal_id = random_code();
 
 ?>
 @isset($attributes['tital'])
 <?php
 $tital= $attributes['tital'];
+$width= $attributes['width'];
 ?>
 @endisset
 <div class="form-group">
-    <div class="col-lg-12">
+<div class="col-lg-{{$width}}">
 
         <!-- User thumbnail -->
         <div class="thumbnail">
@@ -22,6 +24,12 @@ $tital= $attributes['tital'];
                         </span>
                     </div>
                     <input type="hidden" name="{{$name}}" id="input-{{$modal_id}}">
+                </div>
+                <div class="caption text-center">
+                    <h2 class="no-margin">{{$tital}}</h2>
+                    @error($name)
+                        <label id="{{$name}}-error" class="validation-error-label" for="{{$name}}">{{ $message }}</label>
+                    @enderror
                 </div>
             </div>
             <!-- /user thumbnail -->
@@ -83,21 +91,7 @@ $(".file-uploader-{{$modal_id}}").pluploadQueue({
 });
 var uploader{{$modal_id}} = $('.file-uploader-{{$modal_id}}').pluploadQueue();
 
-uploader{{$modal_id}}.bind('FileUploaded', function() {
-    if (uploader{{$modal_id}}.files.length == (uploader{{$modal_id}}.total.uploaded + uploader{{$modal_id}}.total.failed)) {
-        $.ajax({
-           type:'GET',
-           url:'{{route('admin.media.getImages')}}',
-           success:function(data){
-              console.log(data);
-              getImages{{$modal_id}}(data);
-           },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    }
-});
+
 $.ajax({
     type:'GET',
     url:'{{route('admin.media.getImages')}}',
@@ -152,14 +146,28 @@ $(document).on("click",".img-file-up-{{$modal_id}}",function() {
     // console.log($(this).parent().parent().siblings('img') , $('img.selected'));
 
 });
+$(document).on("click",".single-img{{$modal_id}}",function() {
+console.log(uploader{{$modal_id}});
 
-$(".single-img{{$modal_id}}").click(function() {
+// $(".single-img{{$modal_id}}").click(function() {
     // alert("Handler for .click() called.");
+    $.ajax({
+        type:'GET',
+        url:'{{route('admin.media.getImages')}}',
+        success:function(data){
+            console.log(data);
+            getImages{{$modal_id}}(data);
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $("#single-img-"+$(this).attr('img-id')).modal("toggle");
+
 });
 // Defaults
 // Defaults
-$('.save-images-input{{$modal_id}}').click(function() {
+$(document).on("click",".save-images-input{{$modal_id}}",function() {
 
     for (let index = 0; index < $('img.selected').length; index++) {
         const element = $('img.selected')[index];
