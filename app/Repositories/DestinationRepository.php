@@ -22,7 +22,7 @@ class DestinationRepository
     /**
      * Get todo query
      *
-     * @return Todo query
+     * @return Destination query
      */
 
     public function getQuery()
@@ -34,7 +34,7 @@ class DestinationRepository
      * Find todo with given id or throw an error.
      *
      * @param integer $id
-     * @return Todo
+     * @return Destination
      */
 
     public function findOrFail($id)
@@ -50,7 +50,7 @@ class DestinationRepository
      * Find todo with given id or throw an error.
      *
      * @param integer $id
-     * @return Todo
+     * @return Destination
      */
 
     public function find($id)
@@ -87,7 +87,7 @@ class DestinationRepository
      * Create a new todo.
      *
      * @param array $params
-     * @return Todo
+     * @return Destination
      */
     public function create($params)
     {
@@ -108,7 +108,7 @@ class DestinationRepository
             'description' => isset($params['description']) ? $params['description'] : null,
             'tmp_img' => isset($params['tmp_img']) ? $params['tmp_img'] : null,
             'img' => isset($params['img']) ? $params['img'] : null,
-            'locations' => isset($params['location_tital']) ? $params['location_tital'] : null,
+            'locations' => isset($params['locations']) ? $params['locations'] : null,
         ];
         // if ($action === 'create') {
         //     $formatted['user_id'] = \Auth::user()->id;

@@ -1,8 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-                {!! Form::open(['route' => 'admin.destination.store', 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'novalidate'=>'novalidate']) !!}
-
+                {!! Form::open(['route' => ['admin.destination.update',$rows->id], 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'method' => 'PUT', 'id', 'novalidate'=>'novalidate']) !!}
 <div class="container-detached">
     <div class="content-detached">
 
@@ -24,9 +23,10 @@
                     <fieldset class="content-group">
                         @foreach ($form as $key => $attributes )
 
-                                {!! getInput($key , null, $attributes ) !!}
+                                {!! getInput($key , $rows->$key, $attributes ) !!}
 
                         @endforeach
+
 
 
 

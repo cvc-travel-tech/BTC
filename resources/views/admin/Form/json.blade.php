@@ -13,26 +13,36 @@ $tital= $attributes['tital'];
     {!! Form::label($name,$tital, ['class' => 'control-label col-lg-3']) !!}
     <div class="col-lg-12">
         {{-- {{ Form::text($name, $value, array_merge(['class' => 'form-control' ,'required' => 'required'], $attributes)) }} --}}
-        <table class="table table-striped table-bordered table-{{$modal_id}}">
+        <table class="table table-striped table-bordered table-json ">
             <thead class="thead-dark">
                 <tr>
                     @foreach ($inputs as $key => $attributes )
                         <th width="{{$attributes['width']}}">{{$attributes['tital']}}</th>
                     @endforeach
+                <th>Remove</th>
+
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    @foreach ($inputs as $key => $attributes )
-                        <td >{!! getInput($key , null, $attributes ) !!}</td>
-                    @endforeach
-                </tr>
+            <tbody class="g-items" >
+             @isset($value)
+                @foreach ($value as  $value_key=> $value)
+                    <tr data-number="{{$value_key}}">
+                        @foreach ($inputs as $key => $attributes )
+                            <td >{!! getJsonInput($name , $key , $value[$key], $attributes ,$value_key) !!}</td>
+                        @endforeach
+                        <td><span class="btn btn-danger btn-sm btn-remove-item"><i class="fa fa-trash"></i></span></td>
+                    </tr>
+                @endforeach
+             @endisset
+            <tr><td colspan="{{count($inputs) +1 }}"><span class="btn btn-info btn-sm btn-add-item"><i class="icon ion-ios-add-circle-outline"></i> {{__('Add item')}}</span></td></tr>
             </tbody>
-            <tfoot>
-                <tr>
-                <td><button type="button" class="btn btn-info add-row-{{$modal_id}}" table-id="{{$modal_id}}">ADD</button></td>
-                <td></td>
-                </tr>
+            <tfoot class="g-more hide">
+                    <tr data-number="__number__">
+                        @foreach ($inputs as $key => $attributes )
+                            <td >{!! getJsonInput($name , $key, null, $attributes ) !!}</td>
+                        @endforeach
+                        <td><span class="btn btn-danger btn-sm btn-remove-item"><i class="fa fa-trash"></i></span></td>
+                    </tr>
             </tfoot>
         </table>
         @error($name)

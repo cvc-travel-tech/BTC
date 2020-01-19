@@ -19,9 +19,12 @@ class DestinationDatatables extends DataTable
      */
     public function dataTable($query)
     {
+
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'destinationdatatables.action');
+            ->editColumn('name', '<a href="{{route("admin.destination.edit" , $id)}}"> {{$name}}</a>')
+            ->addColumn('action', 'destinationdatatables.action')
+            ->rawColumns(['name', 'action']);
     }
 
     /**
@@ -51,7 +54,7 @@ class DestinationDatatables extends DataTable
 
             ->parameters([
                 'responsive' => true,
-                'autoWidth' => true,
+                'autoWidth' => false,
                 // 'serverSide' =>  false
 
                 // 'lengthMenu' => [

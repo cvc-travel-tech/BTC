@@ -81,30 +81,34 @@ class DestinationController extends Controller
                 'width' => '4',
                 'placeholder' => 'Pick a size...',
             ],
-            'locations[]' => [
+            'locations' => [
                 'type' => 'json',
                 'tital' => 'Tmp Img',
-                'width' => '4',
+                'width' => '12',
                 'inputs' => [
-                    'location.tital[]' => [
+                    'tital' => [
                         'type' => 'text',
                         'tital' => 'Tmp Img',
-                        'width' => '30%',
+                        'width' => '20%',
                         'placeholder' => 'Pick a size...',
                     ],
-                    'location.description[]' => [
+                    'description' => [
                         'type' => 'ckeditor',
                         'tital' => 'description',
-                        'width' => '70%',
                         'placeholder' => 'Pick a size...',
-
+                        'width' => '55%',
                     ],
+                    'tmp_img' => [
+                        'type' => 'img',
+                        'tital' => 'Tmp Img',
+                        'width' => '20%',
+                        'placeholder' => 'Pick a size...',
+                    ],
+
                 ],
                 'placeholder' => 'Pick a size...',
             ],
         ];
-
-
         $data = $this->data;
         $data['page-doc'] = "Create";
         return view('admin.Destination.create', compact('data', 'form'));
@@ -143,6 +147,63 @@ class DestinationController extends Controller
     public function edit($id)
     {
         //
+        $rows = $this->repo->findOrFail($id);
+        // dd();
+        $form = [
+            'name' => [
+                'type' => 'text',
+                'tital' => 'Name',
+                'placeholder' => 'Pick a size...',
+            ],
+            'description' => [
+                'type' => 'ckeditor',
+                'tital' => 'description',
+                'placeholder' => 'Pick a size...',
+
+            ],
+            'img' => [
+                'type' => 'img',
+                'tital' => 'Img',
+                'width' => '12',
+                'placeholder' => 'Pick a size...',
+            ],
+            'tmp_img' => [
+                'type' => 'img',
+                'tital' => 'Tmp Img',
+                'width' => '4',
+                'placeholder' => 'Pick a size...',
+            ],
+            'locations' => [
+                'type' => 'json',
+                'tital' => 'Tmp Img',
+                'width' => '12',
+                'inputs' => [
+                    'tital' => [
+                        'type' => 'text',
+                        'tital' => 'Tmp Img',
+                        'width' => '20%',
+                        'placeholder' => 'Pick a size...',
+                    ],
+                    'description' => [
+                        'type' => 'ckeditor',
+                        'tital' => 'description',
+                        'placeholder' => 'Pick a size...',
+                        'width' => '55%',
+                    ],
+                    'tmp_img' => [
+                        'type' => 'img',
+                        'tital' => 'Tmp Img',
+                        'width' => '20%',
+                        'placeholder' => 'Pick a size...',
+                    ],
+
+                ],
+                'placeholder' => 'Pick a size...',
+            ],
+        ];
+        $data = $this->data;
+        $data['page-doc'] = "Create";
+        return view('admin.Destination.edit', compact('data', 'form', 'rows'));
     }
 
     /**
@@ -155,6 +216,9 @@ class DestinationController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $this->repo->find($id);
+        $data = $this->repo->update($data, $this->request->all());
+        return redirect()->route('admin.destination.index')->with('successMsg', 'Property is updated .');
     }
 
     /**

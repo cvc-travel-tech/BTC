@@ -767,7 +767,42 @@ $(function() {
 
                  // CKEDITOR.replace("editor-full");
 
-               
+
+    $(".table-json").each(function() {
+        let container = $(this);
+        $(this).on("click", ".btn-remove-item", function() {
+            $(this)
+                .closest("tr")
+                .remove();
+        });
+        $(this).on("press", "input,select", function() {
+            let value = $(this).val();
+            $(this).attr("value", value);
+        });
+    });
+    $(".btn-add-item").click(function () {
+        let number = $(this)
+            .closest(".table-json")
+            .find(".g-items tr:nth-last-child(2)")
+            .attr("data-number");
+        if (number === undefined) number = 0;
+        else number++;
+
+        console.log(number);
+
+        let extra_html = $(this)
+            .closest(".table-json")
+            .find(".g-more")
+            .html();
+        extra_html = extra_html.replace(/__name__=/gi, "name=");
+        extra_html = extra_html.replace(/__number__/gi, number);
+        $(this)
+            .closest(".table-json")
+            .find(".g-items tr:last-child")
+            .before(extra_html);
+        CKEDITOR.replace("ckeditor-" + number);
+    });
+
 
 
 });
