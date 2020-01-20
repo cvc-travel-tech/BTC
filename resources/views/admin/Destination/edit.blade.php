@@ -22,8 +22,10 @@
                 {{-- <form class="form-horizontal form-validate-jquery" action="#" novalidate="novalidate"> --}}
                     <fieldset class="content-group">
                         @foreach ($form as $key => $attributes )
+                                @if ($key != 'tmp_img')
 
                                 {!! getInput($key , $rows->$key, $attributes ) !!}
+                                @endif
 
                         @endforeach
 
@@ -92,10 +94,14 @@
                 <div class="category-content">
                     <form action="#">
                         <div class="has-feedback has-feedback-left">
-                            <input type="search" class="form-control" placeholder="Search">
-                            <div class="form-control-feedback">
-                                <i class="icon-search4 text-size-base text-muted"></i>
-                            </div>
+                            @foreach ($form as $key => $attributes )
+                            @if ($key == 'tmp_img')
+
+                            {!! getInput($key , $rows->$key, $attributes ) !!}
+                            @endif
+
+                            @endforeach
+
                         </div>
                     </form>
                 </div>

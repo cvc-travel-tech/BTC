@@ -65,3 +65,28 @@ if (!function_exists('SeoInput')) {
         return $test;
     }
 }
+
+// if (!function_exists('active')) {
+//     function active($route = null)
+//     {
+//         return (strpos(Route::currentRouteName(), 'admin.' . $route) == 0) ? 'active' : '';;
+//     }
+// }
+
+if (!function_exists('active')) {
+    function active($route = null, $action = null)
+    {
+        if (request()->segment(2) == $route) {
+            if ($action != null) {
+                if (request()->segment(3) == $action) {
+                    return 'active';
+                } else {
+                    return '';
+                }
+            }
+            return 'active';
+        } else {
+            return '';
+        }
+    }
+}

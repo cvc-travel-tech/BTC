@@ -13,7 +13,6 @@ $width= $attributes['width'];
 @endisset
 <div class="form-group">
 <div class="col-lg-{{$width}}">
-
         <!-- User thumbnail -->
         <div class="thumbnail">
                 <div class="thumb thumb-slide" div-id="{{$modal_id}}">

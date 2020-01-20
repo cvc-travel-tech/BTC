@@ -34,38 +34,15 @@
 
 								<!-- Main -->
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-								<li><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<li><a href="{{route('admin.home')}}"><i class="icon-home4"></i> <span>الرئيسيه</span></a></li>
 								<li>
-									<a href="#"><i class="icon-stack"></i> <span>Starter kit</span></a>
+									<a href="#"><i class="icon-stack"></i> <span>Destination</span></a>
 									<ul>
-										<li><a href="horizontal_nav.html">Horizontal navigation</a></li>
-										<li><a href="1_col.html">1 column</a></li>
-										<li><a href="2_col.html">2 columns</a></li>
-										<li>
-											<a href="#">3 columns</a>
-											<ul>
-												<li><a href="3_col_dual.html">Dual sidebars</a></li>
-												<li><a href="3_col_double.html">Double sidebars</a></li>
-											</ul>
-										</li>
-										<li><a href="4_col.html">4 columns</a></li>
-										<li>
-											<a href="#">Detached layout</a>
-											<ul>
-												<li><a href="detached_left.html">Left sidebar</a></li>
-												<li><a href="detached_right.html">Right sidebar</a></li>
-												<li><a href="detached_sticky.html">Sticky sidebar</a></li>
-											</ul>
-										</li>
-										<li><a href="layout_boxed.html">Boxed layout</a></li>
-										<li class="navigation-divider"></li>
-										<li><a href="layout_navbar_fixed_main.html">Fixed top navbar</a></li>
-										<li><a href="layout_navbar_fixed_secondary.html">Fixed secondary navbar</a></li>
-										<li><a href="layout_navbar_fixed_both.html">Both navbars fixed</a></li>
-										<li class="active"><a href="layout_fixed.html">Fixed layout</a></li>
+										<li class="{{ active('destination') }}" ><a href="{{route('admin.destination.index')}}"><i class="icon-stack"></i> All</a></li>
+                                        <li  class="{{ active('destination' , 'create') }}"><a href="{{route('admin.destination.create')}}"><i class="icon-stack"></i> Create</a></li>
+
 									</ul>
 								</li>
-								<li><a href="changelog.html"><i class="icon-list-unordered"></i> <span>Changelog</span></a></li>
 								<!-- /main -->
 
 							</ul>
