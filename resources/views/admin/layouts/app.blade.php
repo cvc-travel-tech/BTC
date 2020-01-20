@@ -23,7 +23,7 @@
     @yield('style')
 
 </head>
-<body class="navbar-top  has-detached-right">
+<body class="navbar-top  has-detached-right sidebar-xs">
         @include('admin.layouts.include.navbar')
 
     <!-- Page container -->

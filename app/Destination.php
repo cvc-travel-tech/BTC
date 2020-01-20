@@ -35,4 +35,17 @@ class Destination extends Model implements HasMedia
     {
         return $this->belongsToMany('App\Package', 'package_id');
     }
+
+
+    public function getSeoMeta()
+    {
+        $meta = SEO::where('object_id', $this->id)->where('object_model', 'Destination')->first();
+        if (!empty($meta)) {
+            $meta = $meta->toArray();
+        }
+        // $meta['slug'] = $this->slug;
+        // $meta['full_url'] = $this->getDetailUrl();
+        $meta['service_title'] = $this->name;
+        return $meta;
+    }
 }

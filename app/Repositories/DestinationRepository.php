@@ -4,10 +4,12 @@ namespace App\Repositories;
 
 use App\Destination;
 use Illuminate\Validation\ValidationException;
+use App\Seo;
 
 class DestinationRepository
 {
     private $data;
+    private $model = 'Destination';
 
     /**
      * Instantiate a new instance.
@@ -91,9 +93,17 @@ class DestinationRepository
      */
     public function create($params)
     {
-        return $this->data->forceCreate($this->formatParams($params));
-    }
 
+        $data = $this->data->forceCreate($this->formatParams($params));
+        $seo = new Seo();
+        $seo->object_id = $data->id;
+        $seo->object_model = $this->model;
+        $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $data->name;
+        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $data->description;
+        $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $data->tmp_img;
+        $seo->save();
+        return $data;
+    }
     /**
      * Prepare given params for inserting into database.
      *
@@ -143,6 +153,13 @@ class DestinationRepository
     public function update(Destination $destination, $params)
     {
         $destination->forceFill($this->formatParams($params, 'update'))->save();
+        $seo = SEO::where('object_id', $destination->id)->where('object_model', 'Destination')->first();
+        $seo->object_id = $destination->id;
+        $seo->object_model = $this->model;
+        $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $destination->name;
+        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $destination->description;
+        $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $destination->tmp_img;
+        $seo->save();
         return $destination;
     }
 

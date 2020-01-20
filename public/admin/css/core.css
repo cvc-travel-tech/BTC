@@ -8198,3 +8198,47 @@ h6.panel-title,
 .thumbnail .thumb img.selected {
     border: 4px solid #2196F3;
 }
+
+
+.form-group-item .g-items {
+    margin-bottom: 20px;
+}
+
+.form-group-item .g-items .item {
+    border: solid 1px #c4cdd5;
+    border-top: 0px;
+    padding: 0px 15px;
+}
+
+.form-group-item .g-items .item .form-control {
+    margin-bottom: 10px;
+}
+
+.form-group-item .g-items .item .form-control:last-child {
+    margin-bottom: 0px;
+}
+
+.form-group-item .g-items .item>.row>div {
+    padding: 10px;
+    border-right: 1px solid #c4cdd5;
+}
+
+.form-group-item .g-items .item>.row>div:last-child {
+    border-right: 0px;
+}
+
+.form-group-item .g-more {
+    display: none;
+}
+
+.form-group-item label {
+    display: block;
+    min-height: 20px;
+}
+
+.form-group-item .g-items-header {
+    font-weight: bold;
+    border: solid 1px #c4cdd5;
+    padding: 10px;
+    text-align: center;
+}

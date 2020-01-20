@@ -31,7 +31,7 @@ $width= $attributes['width'];
                         <button type="button" class="btn bg-success-400 btn-icon btn-xs legitRipple select-img" img-id="{{$value_key}}"  ><i class="icon-plus2"></i></button>
                     </span>
                 </div>
-                <input type="hidden" __name__="{{$jsonName}}[{{$value_key}}][{{$inputName}}]" value="{{$value}}" id="input-{{$value_key}}">
+                <input type="hidden" name="{{$jsonName}}[{{$value_key}}][{{$inputName}}]" value="{{$value}}" id="input-{{$value_key}}">
             </div>
         </div>
         <!-- /user thumbnail -->

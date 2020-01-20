@@ -57,6 +57,7 @@ class DestinationController extends Controller
      */
     public function create()
     {
+
         $form = [
             'name' => [
                 'type' => 'text',
@@ -72,6 +73,12 @@ class DestinationController extends Controller
             'img' => [
                 'type' => 'img',
                 'tital' => 'Img',
+                'width' => '12',
+                'placeholder' => 'Pick a size...',
+            ],
+            'img2' => [
+                'type' => 'multi-image',
+                'tital' => 'multi-image',
                 'width' => '12',
                 'placeholder' => 'Pick a size...',
             ],
@@ -147,8 +154,9 @@ class DestinationController extends Controller
     public function edit($id)
     {
         //
+
         $rows = $this->repo->findOrFail($id);
-        // dd();
+        $rows['seo'] = $rows->getSeoMeta();
         $form = [
             'name' => [
                 'type' => 'text',
