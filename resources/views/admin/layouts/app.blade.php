@@ -138,7 +138,7 @@
     <script type="text/javascript" src="{{ asset('admin/js/plugins/tables/datatables/bootstrap4/responsive/dataTables.responsive.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/plugins/tables/datatables/bootstrap4/responsive/responsive.bootstrap4.min.js')}}"></script>
 
-    <script src="/vendor/datatables/buttons.server-side.js"></script>
+    <script src="{{ asset('vendor/datatables/buttons.server-side.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('admin/js/plugins/forms/selects/select2.min.js')}}"></script>
     @yield('js')
 
