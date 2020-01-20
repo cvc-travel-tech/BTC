@@ -162,8 +162,7 @@
 
     <script>
 
-
-    $(".file-uploader").pluploadQueue({
+$(".file-uploader").pluploadQueue({
     runtimes: "html5, html4, Flash, Silverlight",
     url: "{{route('admin.media.store')}}",
     chunk_size: "15000Kb",
@@ -216,14 +215,16 @@ $.ajax({
     $('[data-popup="lightbox"]').fancybox({
         padding: 3
     });
-function getImages(data,img_id){
+function getImages(data,img_id , multi = false){
   //some code
+    console.log(multi);
+
     $('.get-images').html('');
     for(var i=0;i<data.length;i++) {
         $('.get-images').append(`
-            <div class="col-lg-1 col-sm-3 ">
+            <div class="col-lg-1 col-md-2 col-xs-3 ">
                 <div class="thumbnail ">
-                    <div class="thumb single-img">
+                    <div class="thumb single-img " multi="${multi}">
                         <img src="{{ asset('storage/tmp/uploads/thumb')}}/${data[i].file_path}" img-src="{{ asset('storage/tmp/uploads/large')}}/${data[i].file_path}"" img-id="${data[i].id}" input-id="${img_id}" class=""  alt="">
                         <div class="caption-overflow ">
                             <span class="">
@@ -237,8 +238,10 @@ function getImages(data,img_id){
         `);
     }
 }
+
 $(document).on("click",".img-file-up",function() {
-    if($(this).parent().parent().parent().hasClass('single-img')){
+    console.log($(this).parent().parent().parent().attr('multi'));
+    if($(this).parent().parent().parent().attr('multi') == 'false'){
         for (let index = 0; index < $('img.selected').length; index++) {
             const element = $('img.selected')[index];
             $(element).removeClass('selected');
@@ -272,22 +275,66 @@ console.log(uploader);
     $("#single-img").modal("toggle");
     $("#single-img").attr("modal-id" , ImgId);
 });
+$(document).on("click",".image-gallery",function() {
+    var ImgId = $(this).attr('gallery-id');
+    $.ajax({
+        type:'GET',
+        url:'{{route('admin.media.getImages')}}',
+        success:function(data){
+            console.log(ImgId);
+            getImages(data , ImgId , true );
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $("#single-img").modal("toggle");
+    $("#single-img").attr("modal-id" , ImgId);
+});
+
 // Defaults
 // Defaults
 $(document).on("click",".save-images-input",function() {
+    if ($('img.selected').length == 1) {
+        for (let index = 0; index <= $('img.selected').length; index++) {
 
-    for (let index = 0; index < $('img.selected').length; index++) {
+            const element = $('img.selected')[index];
+            console.log($(element));
+            var myDiv = $('div[div-id="' + $(element).attr('input-id') + '"]');
+            myDiv.find( "img" ).attr("src",$(element).attr('img-src'));
+            myDiv.find( "#input-"+$(element).attr('input-id') ).val($(element).attr('img-id'));
+            $(element).removeClass('selected');
+        }
+    }else{
+        console.log($('img.selected'));
+        var length = $('img.selected').length ;
+         for (let x = 0; x <= length ; x++ ) {
 
-        const element = $('img.selected')[index];
-        console.log($(element));
-        var myDiv = $('div[div-id="' + $(element).attr('input-id') + '"]');
-        myDiv.find( "img" ).attr("src",$(element).attr('img-src'));
-        myDiv.find( "#input-"+$(element).attr('input-id') ).val($(element).attr('img-id'));
-        $(element).removeClass('selected');
+
+            const element = $('img.selected')[x];
+            console.log($(element).attr('input-id'));
+            var myDiv = $('div[gallery-id="' + $(element).attr('input-id') + '"]');
+            var inputName = myDiv.attr('input-name');
+            myDiv.append(`
+            <div class="col-lg-2 col-md-3 col-xs-4 ">
+                <div class="thumbnail ">
+                    <div class="thumb single-img ">
+                        <img src="${$(element).attr('img-src')}"  class=""  alt="">
+                        <input type="hidden" name="${inputName}[]" value="${$(element).attr('img-id')}" >
+                    </div>
+                </div>
+            </div>
+        `);;
+            // myDiv.find( "img" ).attr("src",$(element).attr('img-src'));
+            // myDiv.find( "#input-"+$(element).attr('input-id') ).val($(element).attr('img-id'));
+        }
+        for (let x = 0; x <= length ; x++ ) {
+            const element = $('img.selected')[x];
+            $(element).removeClass('selected');
+        }
     }
     $("#single-img").modal("hide");
 });
-
 
     </script>
 @endsection

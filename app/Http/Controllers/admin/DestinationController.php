@@ -175,6 +175,12 @@ class DestinationController extends Controller
                 'width' => '12',
                 'placeholder' => 'Pick a size...',
             ],
+                      'img2' => [
+                'type' => 'multi-image',
+                'tital' => 'multi-image',
+                'width' => '12',
+                'placeholder' => 'Pick a size...',
+            ],
             'tmp_img' => [
                 'type' => 'img',
                 'tital' => 'Tmp Img',
