@@ -1,7 +1,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-default navbar-fixed-top header-highlight">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><img src="admin/images/logo_light.png" alt=""></a>
+			<a class="navbar-brand" href="index.html"><img src="{{setting('admin', 'logo' , 'img')}}" alt=""></a>
 
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -21,7 +21,7 @@
 					<a href="#">
 						<i class="icon-cog3"></i>
 						<span class="visible-xs-inline-block position-right">Icon link</span>
-					</a>						
+					</a>
 				</li>
 
 				<li class="dropdown dropdown-user">

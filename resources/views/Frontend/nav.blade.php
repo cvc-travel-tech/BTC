@@ -9,7 +9,7 @@
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo">
-                        <a href="index.html"><img src="{{ asset('frontend/images/logo-04.png')}}" height="50px" alt="" />
+                        <a href="index.html"><img src="{{setting('site', 'logo' , 'img')}}" height="50px" alt="" />
                         </a>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="index.html"><img src="{{ asset('frontend/images/logo-04.png')}}" alt="" />
+                            <a href="index.html"><img src="{{setting('site', 'logo' , 'img')}}" alt="" />
                             </a>
                         </div>
                         <div class="main-menu">

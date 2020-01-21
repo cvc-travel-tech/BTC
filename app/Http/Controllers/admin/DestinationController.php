@@ -44,6 +44,7 @@ class DestinationController extends Controller
     public function index()
     {
 
+
         $data = $this->data;
         $datatable = $this->datatable;
         $data['page-doc'] = "index";

@@ -1,124 +1,55 @@
 @extends('admin.layouts.app')
 
 @section('content')
-                {!! Form::open(['route' => ['admin.destination.update',$rows->id], 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'method' => 'PUT', 'id', 'novalidate'=>'novalidate']) !!}
-<div class="container-detached">
-    <div class="content-detached">
-
-        <!-- Simple panel -->
-        <div class="panel panel-flat">
-            <div class="panel-heading">
-                <h5 class="panel-title"><a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
-                <div class="heading-elements">
-                    <ul class="icons-list">
-                        <li><a data-action="collapse"></a></li>
-                        <li><a data-action="close"></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="panel-body">
-
-                {{-- <form class="form-horizontal form-validate-jquery" action="#" novalidate="novalidate"> --}}
-                    <fieldset class="content-group">
-                        @foreach ($form as $key => $attributes )
-                                @if ($key != 'tmp_img')
-                                    {!! getInput($key , $rows->$key, $attributes ) !!}
-                                @endif
-                        @endforeach
-
-
-
-
-                    </fieldset>
-
-
-
-                    <div class="text-right">
-                        <button type="reset" class="btn btn-default legitRipple" id="reset">Reset <i class="icon-reload-alt position-right"></i></button>
-                        <button type="submit" class="btn btn-primary legitRipple">Submit <i class="icon-arrow-left13 position-right"></i></button>
-                    </div>
-
-
+                {!! Form::open(['route' => ['admin.setting.store'], 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'id', 'novalidate'=>'novalidate']) !!}
+<div class="col-md-12">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title"><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
             </div>
         </div>
-        <!-- /simple panel -->
 
+        <div class="panel-body">
+            <div class="tabbable nav-tabs-vertical nav-tabs-left">
+                <ul class="nav nav-tabs nav-tabs-highlight">
+                    @foreach ($form as $key => $inputs )
+                    <li class="@if($loop->first) active @endif"><a href="#{{$key}}" data-toggle="tab" class="legitRipple" aria-expanded="false"><i class="icon-menu7 position-left"></i> {{$key}}</a></li>
+                    @endforeach
+                </ul>
 
-                <!-- Simple panel -->
-        <div class="panel panel-flat">
-            <div class="panel-heading">
-                <h5 class="panel-title"><a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
-                <div class="heading-elements">
-                    <ul class="icons-list">
-                        <li><a data-action="collapse"></a></li>
-                        <li><a data-action="close"></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="panel-body">
-
-                {{-- <form class="form-horizontal form-validate-jquery" action="#" novalidate="novalidate"> --}}
-                    <fieldset class="content-group">
-
-                        {!! SeoInput($rows['seo']) !!}
-
-
-                    </fieldset>
-
-
-            </div>
-        </div>
-        <!-- /simple panel -->
-
-    </div>
-</div>
-
-
-<div class="sidebar-detached affix-top" >
-    <div class="sidebar sidebar-default">
-        <div class="sidebar-content">
-
-            <!-- Sidebar search -->
-            <div class="sidebar-category">
-                <div class="category-title">
-                    <span>Search</span>
-                    <ul class="icons-list">
-                        <li><a href="#" data-action="collapse"></a></li>
-                    </ul>
-                </div>
-
-                <div class="category-content">
-                    <form action="#">
-                        <div class="has-feedback has-feedback-left">
-                            @foreach ($form as $key => $attributes )
-                            @if ($key == 'tmp_img')
-
-                            {!! getInput($key , $rows->$key, $attributes ) !!}
-                            @endif
-
+                <div class="tab-content">
+                    @foreach ($form as $group => $inputs )
+                        <div class="tab-pane  has-padding @if($loop->first) active @endif" id="{{$group}}">
+                            @foreach ($inputs as $key => $attributes )
+                            @isset($inputVal[$key])
+                                {!! getInput($key , $inputVal[$key], $attributes ) !!}
+                                @else
+                                {!! getInput($key , null, $attributes ) !!}
+                            @endisset
                             @endforeach
-
                         </div>
-                    </form>
+                    @endforeach
+
                 </div>
             </div>
-            <!-- /sidebar search -->
 
-
-
-            <!-- Form sample -->
-                    <div class="text-right">
-                        <button type="reset" class="btn btn-default legitRipple" id="reset">Reset <i class="icon-reload-alt position-right"></i></button>
-                        <button type="submit" class="btn btn-primary legitRipple">Submit <i class="icon-arrow-left13 position-right"></i></button>
-                    </div>
-
-            <!-- /form sample -->
-
+            <div class="text-right">
+                <button type="reset" class="btn btn-default legitRipple" id="reset">Reset <i class="icon-reload-alt position-right"></i></button>
+                <button type="submit" class="btn btn-primary legitRipple">Submit <i class="icon-arrow-left13 position-right"></i></button>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
 {!! Form::close() !!}
 
 @endsection

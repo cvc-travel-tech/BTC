@@ -1,6 +1,7 @@
 <?php
 
 use App\Images;
+use App\Setting;
 
 if (!function_exists('random_code')) {
     function random_code()
@@ -50,9 +51,9 @@ if (!function_exists('getJsonInput')) {
 }
 
 if (!function_exists('getImg')) {
-    function getImg($id)
+    function getImg($id, $size = 'large')
     {
-        return asset('storage/tmp/uploads/large') . "/" . Images::find($id)->file_path;
+        return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($id)->file_path;
     }
 }
 
@@ -65,6 +66,19 @@ if (!function_exists('SeoInput')) {
         return $test;
     }
 }
+
+
+if (!function_exists('setting')) {
+    function setting($group, $name, $type = null, $size = 'large')
+    {
+        $Setting = Setting::where('group', $group)->where('name', $name)->first()->val;
+        if ($type == 'img') {
+            return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($Setting)->file_path;
+        }
+        return $Setting;
+    }
+}
+
 
 // if (!function_exists('active')) {
 //     function active($route = null)
