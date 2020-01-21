@@ -83,7 +83,6 @@
         </div>
 
     </section>
-
     <!--========= Scripts ===========-->
     <script src="{{ asset('frontend/js/jquery-latest.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
@@ -94,7 +93,7 @@
     <script>
         var typed = new Typed('#type-text', {
             // Waits 1000ms after typing "First"
-            strings: ['', ' Egyptian Tours', ''],
+            strings:  {!!$titles!!},
             /**
              * @property {number} typeSpeed type speed in milliseconds
              */

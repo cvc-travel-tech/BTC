@@ -91,6 +91,20 @@ class SettingController extends Controller
 
                     ],
                 ],
+                'site[titles]' => [
+                    'type' => 'json',
+                    'tital' => 'Site Titles',
+                    'width' => '12',
+                    'inputs' => [
+                        'tital' => [
+                            'type' => 'text',
+                            'tital' => 'Tital',
+                            'width' => '90%',
+                            'placeholder' => 'Pick a size...',
+                        ],
+
+                    ],
+                ],
 
             ],
             'admin' => [

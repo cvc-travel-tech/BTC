@@ -78,6 +78,7 @@ if (!function_exists('setting')) {
     {
         $Setting = Setting::where('group', $group)->where('name', $name)->first();
         if ($Setting) {
+
             # code...
             if ($Setting->val != null) {
                 if ($type == 'img') {
