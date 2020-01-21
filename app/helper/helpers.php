@@ -71,11 +71,15 @@ if (!function_exists('SeoInput')) {
 if (!function_exists('setting')) {
     function setting($group, $name, $type = null, $size = 'large')
     {
-        $Setting = Setting::where('group', $group)->where('name', $name)->first()->val;
-        if ($type == 'img') {
-            return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($Setting)->file_path;
+        $Setting = Setting::where('group', $group)->where('name', $name)->first();
+        if ($Setting) {
+            # code...
+            if ($type == 'img') {
+                return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($Setting->val)->file_path;
+            }
+            return $Setting->val;
         }
-        return $Setting;
+        return '';
     }
 }
 
