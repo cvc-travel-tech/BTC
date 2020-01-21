@@ -51,9 +51,14 @@ if (!function_exists('getJsonInput')) {
 }
 
 if (!function_exists('getImg')) {
-    function getImg($id, $size = 'large')
+    function getImg($id, $size = null)
     {
-        return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($id)->file_path;
+        if ($size != null) {
+            # code...
+            return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($id)->file_path;
+        } else {
+            return asset('storage/tmp/uploads/')  . "/" . Images::find($id)->file_path;
+        }
     }
 }
 
@@ -69,14 +74,14 @@ if (!function_exists('SeoInput')) {
 
 
 if (!function_exists('setting')) {
-    function setting($group, $name, $type = null, $size = 'large')
+    function setting($group, $name, $type = null, $size = null)
     {
         $Setting = Setting::where('group', $group)->where('name', $name)->first();
         if ($Setting) {
             # code...
-            if($Setting->val != null){
+            if ($Setting->val != null) {
                 if ($type == 'img') {
-                    return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($Setting->val)->file_path;
+                    return getImg($Setting->val,  $size);
                 }
                 return $Setting->val;
             }

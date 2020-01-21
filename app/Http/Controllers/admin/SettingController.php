@@ -53,18 +53,45 @@ class SettingController extends Controller
                     'width' => '12',
                     'placeholder' => 'Pick a size...',
                 ],
-                'site[logo]' => [
-                    'type' => 'img',
-                    'tital' => 'Site Logo',
-                    'width' => '3',
-                    'placeholder' => 'Pick a size...',
-                ],
                 'site[description]' => [
                     'type' => 'textarea',
                     'tital' => 'Site Description',
                     'width' => '12',
                     'placeholder' => 'Pick a size...',
                 ],
+                'site[logo]' => [
+                    'type' => 'img',
+                    'tital' => 'Site Logo',
+                    'width' => '3',
+                    'placeholder' => 'Pick a size...',
+                ],
+                'site[mine-img]' => [
+                    'type' => 'img',
+                    'tital' => 'Mine Img',
+                    'width' => '12',
+                    'placeholder' => 'Pick a size...',
+                ],
+                'site[features]' => [
+                    'type' => 'json',
+                    'tital' => 'Features',
+                    'width' => '12',
+                    'inputs' => [
+                        'tital' => [
+                            'type' => 'text',
+                            'tital' => 'Tital',
+                            'width' => '60%',
+                            'placeholder' => 'Pick a size...',
+                        ],
+                        'icon' => [
+                            'type' => 'img',
+                            'tital' => 'Icon',
+                            'width' => '20%',
+                            'placeholder' => 'Pick a size...',
+                        ],
+
+                    ],
+                ],
+
             ],
             'admin' => [
                 'admin[sitename]' => [
@@ -78,6 +105,20 @@ class SettingController extends Controller
                     'tital' => 'admin Logo',
                     'width' => '3',
                     'placeholder' => 'Pick a size...',
+                ],
+            ],
+            'app' => [
+                'app[android-url]' => [
+                    'type' => 'text',
+                    'tital' => 'Android Url',
+                    'width' => '12',
+                    'placeholder' => 'https://play.google.com/store/apps/details?id=com....',
+                ],
+                'app[apple-url]' => [
+                    'type' => 'text',
+                    'tital' => 'Apple Url',
+                    'width' => '3',
+                    'placeholder' => 'https://apps.apple.com/us/app/...',
                 ],
             ]
         ];

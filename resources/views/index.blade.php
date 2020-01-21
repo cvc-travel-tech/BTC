@@ -4,12 +4,12 @@
 @section('content')
 <body>
     <!-- Preloader -->
-  
+
 
 
 
     <section>
-        <div class="tourz-search" style="    background: url({{ asset('frontend/images/egypt.jpg')}}) no-repeat;
+        <div class="tourz-search" style="    background: url({{setting('site', 'mine-img' , 'img' )}}) no-repeat;
     position: relative;
     background-size: cover;">
 
@@ -34,12 +34,14 @@
         <div class=" tourz-hom-ser">
 
             <ul>
-                <li>
-                    <a href="#"> <img src="{{ asset('frontend/images/secure-shield.png')}}" alt="">
-                        <p>Free Cancellation</p>
-                    </a>
-                </li>
-                <li>
+                @foreach ($features as $feature)
+                    <li>
+                        <a href="#"> <img src="{{ getImg($feature['icon'])}}" alt="">
+                            <p>{{$feature['tital']}}</p>
+                        </a>
+                    </li>
+                @endforeach
+                {{-- <li>
                     <a href="#"> <img src="{{ asset('frontend/images/dollar-symbol.svg')}}" alt="">
                         <p>Best Price Guaranteed</p>
                     </a>
@@ -54,7 +56,7 @@
                     <a href="#"> <img src="{{ asset('frontend/images/airplane.svg')}}" alt="">
                         <p>Guaranteed Departure</p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
 
@@ -62,7 +64,7 @@
         </div>
 
 
-        <div class=" tourz-hom-ser">
+        {{-- <div class=" tourz-hom-ser">
             <ul>
                 <li>
                     <a href="#"> <img src="{{ asset('frontend/images/secure-shield.png')}}" alt="">
@@ -85,7 +87,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
         <div class="Khartosha text-center">
             <div class="container">
                 <a href="input.html">
@@ -338,8 +340,8 @@
                             <li><i class="fa fa-check" aria-hidden="true"></i>Save your time and receive support 24/7
                             </li>
                         </ul>
-                        <a href="#"><img src="{{ asset('frontend/images/android.png')}}" alt=""> </a>
-                        <a href="#"><img src="{{ asset('frontend/images/apple.png')}}" alt=""> </a>
+                        <a  href="{{setting('app', 'android-url'  )}}" target="_blank"><img src="{{ asset('frontend/images/android.png')}}" alt=""> </a>
+                        <a href="{{setting('app', 'apple-url'  )}}" target="_blank"><img src="{{ asset('frontend/images/apple.png')}}" alt=""> </a>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,8 @@ class FrontendController extends Controller
 
     public function index()
     {
-        return view('index');
+        $features = setting('site', 'features');
+        return view('index', compact('features'));
     }
 
 
