@@ -74,10 +74,13 @@ if (!function_exists('setting')) {
         $Setting = Setting::where('group', $group)->where('name', $name)->first();
         if ($Setting) {
             # code...
-            if ($type == 'img') {
-                return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($Setting->val)->file_path;
+            if($Setting->val != null){
+                if ($type == 'img') {
+                    return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($Setting->val)->file_path;
+                }
+                return $Setting->val;
             }
-            return $Setting->val;
+            return '';
         }
         return '';
     }
