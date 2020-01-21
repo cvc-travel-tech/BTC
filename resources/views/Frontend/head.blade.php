@@ -5,14 +5,15 @@
 <!-- Mirrored from rn53themes.net/themes/demo/travelz/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Dec 2019 10:11:54 GMT -->
 
 <head>
-    <title>Croconile</title>
     <!--== META TAGS ==-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Enjoy private tours in Egypt & visit the new Grand Egyptian Museum with Croconile starting from 899$, Egyptian pyramids & Nile Cruise in Luxor – Aswan, Cairo Citadel">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    {{-- <meta name="description" content=""> --}}
+    {{-- <meta name="keywords" content="HTML,CSS,XML,JavaScript"> --}}
     <!-- FAV ICON -->
     <link rel="shortcut icon" href="images/logo-04.png">
+    @include('Frontend.seo-meta')
+
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:400,500,700" rel="stylesheet">
     <!-- FONT-AWESOME ICON CSS -->

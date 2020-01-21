@@ -47,7 +47,7 @@ class SettingController extends Controller
         }
         $form = [
             'site' => [
-                'site[sitename]' => [
+                'site[name]' => [
                     'type' => 'text',
                     'tital' => 'Site Name',
                     'width' => '12',
@@ -59,9 +59,9 @@ class SettingController extends Controller
                     'width' => '3',
                     'placeholder' => 'Pick a size...',
                 ],
-                'site[tets]' => [
-                    'type' => 'text',
-                    'tital' => 'Site Name',
+                'site[description]' => [
+                    'type' => 'textarea',
+                    'tital' => 'Site Description',
                     'width' => '12',
                     'placeholder' => 'Pick a size...',
                 ],

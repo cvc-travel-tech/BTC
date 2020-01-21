@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', 'Frontend@index');
-Route::get('/about', 'Frontend@about');
-
-
-
+Route::get('/', 'FrontendController@index');
+Route::get('/about', 'FrontendController@about');
 Route::get('example', ['example' => 'exampl@index', 'as' => 'exampl.index']);
 
 Auth::routes();
