@@ -53,29 +53,3 @@ $tital= $attributes['tital'];
     </div>
 </div>
 
-<!-- /basic text input -->
-@push('script')
-
-<script>
-// Allow CSS transitions when page is loaded
-
-// $(window).on("load", function() {
-//     table_{{$modal_id}}  = $(".table-{{$modal_id}}").find("tbody").find('tr:first').html();
-//     console.log(table_{{$modal_id}});
-// });
-var i = 0 ;
-$(document).on("click",".add-row-{{$modal_id}}",function() {
-    var table_{{$modal_id}} = `<tr>
-        @foreach ($inputs as $key => $attributes )
-                        <td >{!! getInput($key , null, $attributes ) !!}</td>
-        @endforeach
-    </tr>`;
-    $(this).parent().parent().parent().siblings('tbody').append(table_{{$modal_id}});
-    // $('.ckeditor').ckeditor();
-    CKEDITOR.replace( 'ckeditor-'+i );
-
-    i++
-});
-
-</script>
-@endpush
