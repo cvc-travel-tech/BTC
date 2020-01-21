@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'Frontend@index');
+Route::get('/about', 'Frontend@about');
+
+
 
 Route::get('example', ['example' => 'exampl@index', 'as' => 'exampl.index']);
 
