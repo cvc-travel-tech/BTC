@@ -13,6 +13,8 @@
 
 Route::get('/', 'FrontendController@index');
 Route::get('/about', 'FrontendController@about');
+Route::get('/blog', 'FrontendController@blog');
+
 Route::get('example', ['example' => 'exampl@index', 'as' => 'exampl.index']);
 
 Auth::routes();
