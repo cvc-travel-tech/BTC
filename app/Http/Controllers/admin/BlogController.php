@@ -1,9 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Request;
+use App\DataTables\BlogDatatables;
 use App\Http\Controllers\Controller;
+use App\Repositories\BlogRepository;
+use App\Http\Requests\BlogRequest;
+use Illuminate\Http\Request;
+
 
 class BlogController extends Controller
 {
@@ -11,11 +13,40 @@ class BlogController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+
      */
+
+    private $request;
+    private $repo;
+    private $data;
+    private $datatable;
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request, BlogDatatables $datatable, BlogRepository $repo)
+    {
+        $this->request = $request;
+        $this->repo = $repo;
+        $this->datatable = $datatable;
+        $this->data = [
+            'module' => 'Blog',
+            'module-url' => route('admin.Blog.index'),
+            'create-url' => route('admin.Blog.create'),
+        ];
+
+        // $this->user = $user;
+        // $this->middleware('feature.available:todo');
+    }
+
+
     public function index()
     {
-         return 'Hello';
-    }
+        $data = $this->data;
+        $datatable = $this->datatable;
+        $data['page-doc'] = "index";
+        return $datatable->render('admin.Blog.index', compact('data'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +55,38 @@ class BlogController extends Controller
      */
     public function create()
     {
-          return view('admin.Blog.create');
+
+                $form = [
+            'title' => [
+                'type' => 'text',
+                'tital' => 'Name',
+                'placeholder' => 'Pick a size...',
+            ],
+            'description' => [
+                'type' => 'ckeditor',
+                'tital' => 'description',
+                'placeholder' => 'Pick a size...',
+
+            ],
+            'img' => [
+                'type' => 'img',
+                'tital' => 'Img',
+                'width' => '12',
+                'placeholder' => 'Pick a size...',
+            ],
+            'tmp_img' => [
+                'type' => 'img',
+                'tital' => 'Tmp Img',
+                'width' => '4',
+                'placeholder' => 'Pick a size...',
+            ],
+       
+        ];
+        $data = $this->data;
+        $data['page-doc'] = "Create";
+       // return view('admin.Destination.create', compact('data', 'form'));
+
+          return view('admin.Blog.create', compact('data', 'form'));
     }
 
     /**
@@ -35,7 +97,9 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->input('title');
+        $data = $this->repo->create($request->all());
+        return redirect()->route('admin.Blog.index')->with('successMsg', 'Property is updated .');
     }
 
     /**
@@ -57,7 +121,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+      
+
     }
 
     /**

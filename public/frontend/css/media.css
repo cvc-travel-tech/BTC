@@ -1,0 +1,43 @@
+/* @media (max-width: 767px) {
+    .icon-float {
+        display: none;
+    }
+}
+
+
+/* Landscape phones and down */
+
+@media (max-width: 480px) {
+    .icon-float {
+        position: fixed !important;
+        left: 0px;
+        bottom: -1px;
+        z-index: 999;
+        top: inherit;
+        width: 100%;
+        background: #333;
+    }
+}
+
+*/
+/* @media (max-width: 480px) {
+    .tourz-hom-ser ul li a 
+    {
+     
+        max-width: 20px;
+        flex-direction: column;
+    }
+} */
+
+@media only screen and (max-width: 1200px) {
+    html {}
+    .ed-mob-menu {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .ed-mob-menu {
+        display: none;
+    }
+}
