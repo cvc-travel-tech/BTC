@@ -41,6 +41,8 @@
                         </a>
                     </li>
                 @endforeach
+
+
                 {{-- <li>
                     <a href="#"> <img src="{{ asset('frontend/images/dollar-symbol.svg')}}" alt="">
                         <p>Best Price Guaranteed</p>

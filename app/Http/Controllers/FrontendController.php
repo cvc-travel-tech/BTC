@@ -11,7 +11,8 @@ class FrontendController extends Controller
     public function index()
     {
         $features = setting('site', 'features');
-        return view('index', compact('features'));
+        $titles = json_encode(collect(setting('site', 'titles'))->pluck('tital'));
+        return view('index', compact('features', 'titles'));
     }
 
 
@@ -20,9 +21,9 @@ class FrontendController extends Controller
         return view('about');
     }
 
-    
-    public function blog(){
+
+    public function blog()
+    {
         return view('blog');
     }
-
 }
