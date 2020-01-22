@@ -20,12 +20,13 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4>Home </h4>
                             <ul>
-                                <li><a href="index.html" class="active">Home</a>
+                                <li><a href="{{ url('/') }}" class="active">Home</a>
                                 </li>
-                                <li><a href="about.html">About us</a> </li>
-                                <li><a href="family-package.html">Packages</a> </li>
-                                <li><a href="contact.html">Contact us</a> </li>
-                                <li><a href="travel-free.html">Travel for Free</a> </li>
+                                <li><a href="{{ url('about') }}">About us</a> </li>
+                                <li><a href="{{ url('family-package') }}">Packages</a> </li>
+                                <li><a href="{{ url('contact') }}">Contact us</a> </li>
+                                <li><a href="{{ url('travel-free') }}">Travel for Free</a> </li>
+
                             </ul>
                         </div>
                     </div>
@@ -80,12 +81,12 @@
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="index.html" class="active">Home</a>
+                                <li><a href="{{ url('/') }}" class="active">Home</a>
                                 </li>
-                                <li><a href="about.html">About us</a> </li>
-                                <li><a href="family-package.html">Packages</a> </li>
-                                <li><a href="contact.html">Contact us</a> </li>
-                                <li><a href="travel-free.html">Travel for Free</a> </li>
+                                <li><a href="{{ url('about') }}">About us</a> </li>
+                                <li><a href="{{ url('family-package') }}">Packages</a> </li>
+                                <li><a href="{{ url('contact') }}">Contact us</a> </li>
+                                <li><a href="{{ url('travel-free') }}">Travel for Free</a> </li>
                             </ul>
                         </div>
                     </div>
