@@ -26,6 +26,8 @@ if (!function_exists('getInput')) {
             return Form::bsNumber($name, $value, $attributes);
         else if ($attributes['type'] == 'img')
             return Form::img($name, $value, $attributes);
+        else if ($attributes['type'] == 'select')
+            return Form::bsSelect($name, $value, $attributes);
         else if ($attributes['type'] == 'multi-image')
             return Form::multiImg($name, $value, $attributes);
         else if ($attributes['type'] == 'json')

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestinationRequest extends FormRequest
+class LocationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -39,7 +39,7 @@ class DestinationRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => trans('todo.title'),
+            'title' => trans('todo.title'),
         ];
     }
 }

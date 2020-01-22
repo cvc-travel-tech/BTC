@@ -1,8 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-{!! Form::open(['route' => 'admin.destination.store', 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'novalidate'=>'novalidate']) !!}
-
+                {!! Form::open(['route' => ['admin.sightseeing.update',$rows->id], 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'method' => 'PUT', 'id', 'novalidate'=>'novalidate']) !!}
 <div class="container-detached">
     <div class="content-detached">
 
@@ -22,13 +21,24 @@
 
                 {{-- <form class="form-horizontal form-validate-jquery" action="#" novalidate="novalidate"> --}}
                     <fieldset class="content-group">
-
                         @foreach ($form as $key => $attributes )
-                        @if ($key != 'tmp_img')
-                            {!! getInput($key , null, $attributes ) !!}
-                        @endif
+                                @if ($key != 'img')
+                                    {!! getInput($key , $rows->$key, $attributes ) !!}
+                                @endif
                         @endforeach
+
+
+
+
                     </fieldset>
+
+
+
+                    <div class="text-right">
+                        <button type="reset" class="btn btn-default legitRipple" id="reset">Reset <i class="icon-reload-alt position-right"></i></button>
+                        <button type="submit" class="btn btn-primary legitRipple">Submit <i class="icon-arrow-left13 position-right"></i></button>
+                    </div>
+
 
             </div>
         </div>
@@ -52,7 +62,7 @@
                 {{-- <form class="form-horizontal form-validate-jquery" action="#" novalidate="novalidate"> --}}
                     <fieldset class="content-group">
 
-                        {!! SeoInput() !!}
+                        {!! SeoInput($rows['seo']) !!}
 
 
                     </fieldset>
@@ -61,6 +71,7 @@
             </div>
         </div>
         <!-- /simple panel -->
+
     </div>
 </div>
 
@@ -79,13 +90,18 @@
                 </div>
 
                 <div class="category-content">
+                    <form action="#">
                         <div class="has-feedback has-feedback-left">
-                                @foreach ($form as $key => $attributes )
-                                @if ($key == 'tmp_img')
-                                    {!! getInput($key , null, $attributes ) !!}
-                                @endif
-                                @endforeach
+                            @foreach ($form as $key => $attributes )
+                            @if ($key == 'img')
+
+                            {!! getInput($key , $rows->$key, $attributes ) !!}
+                            @endif
+
+                            @endforeach
+
                         </div>
+                    </form>
                 </div>
             </div>
             <!-- /sidebar search -->
@@ -120,16 +136,11 @@
 	<script type="text/javascript" src="{{ asset('admin/js/plugins/forms/styling/switchery.min.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('admin/js/plugins/forms/styling/uniform.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/uploaders/dropzone.min.js')}}"></script>
-    	<script type="text/javascript" src="{{ asset('admin/js/plugins/tables/footable/footable.min.js')}}"></script>
-
-    <script type="text/javascript" src="{{ asset('admin/js/pages/table_responsive.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('admin/js/plugins/uploaders/dropzone.min.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('admin/js/plugins/uploaders/plupload/plupload.full.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/plugins/uploaders/plupload/plupload.queue.min.js')}}"></script>
     	<script type="text/javascript" src="{{ asset('admin/js/plugins/media/fancybox.min.js')}}"></script>
-	<script type="text/javascript" src="{{ asset('admin/js/core/libraries/jquery_ui/interactions.min.js')}}"></script>
-	<script type="text/javascript" src="{{ asset('admin/js/plugins/forms/selects/select2.min.js')}}"></script>
 
-    @include('admin.layouts.include.img')
+     @include('admin.layouts.include.img')
 
 @endsection

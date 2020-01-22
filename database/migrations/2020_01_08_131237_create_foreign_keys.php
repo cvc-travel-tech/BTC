@@ -29,7 +29,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('destination_packages', function(Blueprint $table) {
-			$table->foreign('description_id')->references('id')->on('destinations')
+			$table->foreign('destination_id')->references('id')->on('destinations')
 						->onDelete('cascade')
 						->onUpdate('restrict');
 		});
@@ -65,7 +65,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('pages_templete_id_foreign');
 		});
 		Schema::table('destination_packages', function(Blueprint $table) {
-			$table->dropForeign('destination_packages_description_id_foreign');
+			$table->dropForeign('destination_packages_destination_id_foreign');
 		});
 		Schema::table('destination_packages', function(Blueprint $table) {
 			$table->dropForeign('destination_packages_package_id_foreign');

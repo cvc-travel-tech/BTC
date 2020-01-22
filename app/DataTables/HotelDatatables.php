@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Destination;
+use App\Hotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 
-class DestinationDatatables extends DataTable
+class HotelDatatables extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,18 +22,18 @@ class DestinationDatatables extends DataTable
 
         return datatables()
             ->eloquent($query)
-            ->editColumn('name', '<a href="{{route("admin.destination.edit" , $slug)}}"> {{$name}}</a>')
-            ->addColumn('action', 'destinationdatatables.action')
+            ->editColumn('name', '<a href="{{route("admin.hotel.edit" , $slug)}}"> {{$name}}</a>')
+            ->addColumn('action', 'hoteldatatables.action')
             ->rawColumns(['name', 'action']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Destination $model
+     * @param \App\Hotel $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Destination $model)
+    public function query(Hotel $model)
     {
         return $model->newQuery();
     }
@@ -46,7 +46,7 @@ class DestinationDatatables extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('destinations-table')
+            ->setTableId('hotels-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
@@ -106,6 +106,6 @@ class DestinationDatatables extends DataTable
      */
     protected function filename()
     {
-        return 'DestinationDatatables_' . date('YmdHis');
+        return 'HotelDatatables_' . date('YmdHis');
     }
 }

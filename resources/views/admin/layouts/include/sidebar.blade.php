@@ -42,6 +42,20 @@
                                         <li  class="{{ active('destination' , 'create') }}"><a href="{{route('admin.destination.create')}}"><i class="icon-stack"></i> Create</a></li>
 
 									</ul>
+                                </li>
+                                <li>
+									<a href="#"><i class="icon-stack"></i> <span>Sightseeing</span></a>
+									<ul>
+										<li class="{{ active('sightseeing') }}" ><a href="{{route('admin.sightseeing.index')}}"><i class="icon-stack"></i> All</a></li>
+                                        <li  class="{{ active('sightseeing' , 'create') }}"><a href="{{route('admin.sightseeing.create')}}"><i class="icon-stack"></i> Create</a></li>
+									</ul>
+                                </li>
+                                    <li>
+									<a href="#"><i class="icon-stack"></i> <span>Hotel</span></a>
+									<ul>
+										<li class="{{ active('hotel') }}" ><a href="{{route('admin.hotel.index')}}"><i class="icon-stack"></i> All</a></li>
+                                        <li  class="{{ active('hotel' , 'create') }}"><a href="{{route('admin.hotel.create')}}"><i class="icon-stack"></i> Create</a></li>
+									</ul>
 								</li>
 								<!-- /main -->
 

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Hotel extends Model
+class Cruise extends Model
 {
     use HasSlug;
 
-    protected $table = 'hotels';
+    protected $table = 'cruises';
     public $timestamps = true;
     protected $fillable = array('name', 'images', 'email', 'phone', 'overview', 'destination_id');
     protected $casts = [
@@ -57,7 +57,7 @@ class Hotel extends Model
 
     public function getSeoMeta()
     {
-        $meta = SEO::where('object_id', $this->id)->where('object_model', 'Hotel')->first();
+        $meta = SEO::where('object_id', $this->id)->where('object_model', 'Cruise')->first();
 
         if (!empty($meta)) {
             $meta = $meta->toArray();

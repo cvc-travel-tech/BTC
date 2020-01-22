@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Destination extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use HasMediaTrait, HasSlug;
 
     protected $table = 'destinations';
     public $timestamps = true;
@@ -25,6 +27,28 @@ class Destination extends Model implements HasMedia
     {
         return $this->belongsTo('App\Images', 'img');
     }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug')
+            ->usingSeparator('-');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 
     public function Hotels()
     {

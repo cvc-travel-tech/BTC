@@ -16,6 +16,7 @@
         "laravelcollective/html": "^5.8.0",
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-permission": "^3.3",
+        "spatie/laravel-sluggable": "^2.2",
         "yajra/laravel-datatables": "^1.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

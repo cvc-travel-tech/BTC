@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateHotelsTable extends Migration
+class CreateCruisesTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('cruises', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('name', 255);
@@ -23,6 +23,6 @@ class CreateHotelsTable extends Migration
 
     public function down()
     {
-        Schema::drop('hotels');
+        Schema::drop('cruises');
     }
 }

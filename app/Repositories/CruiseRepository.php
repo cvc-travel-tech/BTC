@@ -2,29 +2,29 @@
 
 namespace App\Repositories;
 
-use App\Destination;
+use App\Cruise;
 use Illuminate\Validation\ValidationException;
 use App\Seo;
 
-class DestinationRepository
+class CruiseRepository
 {
     private $data;
-    private $model = 'Destination';
+    private $model = 'Cruise';
 
     /**
      * Instantiate a new instance.
      *
      * @return void
      */
-    public function __construct(Destination $destination)
+    public function __construct(Cruise $cruise)
     {
-        $this->data = $destination;
+        $this->data = $cruise;
     }
 
     /**
      * Get todo query
      *
-     * @return Destination query
+     * @return Cruise query
      */
 
     public function getQuery()
@@ -36,7 +36,7 @@ class DestinationRepository
      * Find todo with given id or throw an error.
      *
      * @param integer $id
-     * @return Destination
+     * @return Cruise
      */
 
     public function findOrFail($slug)
@@ -52,7 +52,7 @@ class DestinationRepository
      * Find todo with given id or throw an error.
      *
      * @param integer $id
-     * @return Destination
+     * @return Cruise
      */
 
     public function find($id)
@@ -89,7 +89,7 @@ class DestinationRepository
      * Create a new todo.
      *
      * @param array $params
-     * @return Destination
+     * @return Cruise
      */
     public function create($params)
     {
@@ -99,7 +99,7 @@ class DestinationRepository
         $seo->object_id = $data->id;
         $seo->object_model = $this->model;
         $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $data->name;
-        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $data->description;
+        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $data->overview;
         $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $data->tmp_img;
         $seo->save();
         return $data;
@@ -115,10 +115,11 @@ class DestinationRepository
     {
         $formatted = [
             'name' => isset($params['name']) ? $params['name'] : null,
-            'description' => isset($params['description']) ? $params['description'] : null,
-            'tmp_img' => isset($params['tmp_img']) ? $params['tmp_img'] : null,
-            'img' => isset($params['img']) ? $params['img'] : null,
-            'locations' => isset($params['locations']) ? $params['locations'] : null,
+            'overview' => isset($params['overview']) ? $params['overview'] : null,
+            'phone' => isset($params['phone']) ? $params['phone'] : null,
+            'email' => isset($params['email']) ? $params['email'] : null,
+            'images' => isset($params['images']) ? $params['images'] : null,
+            'destination_id' => isset($params['destination_id']) ? $params['destination_id'] : null,
         ];
         // if ($action === 'create') {
         //     $formatted['user_id'] = \Auth::user()->id;
@@ -127,10 +128,8 @@ class DestinationRepository
     }
 
 
-
-
     /**
-     * List destination by name only
+     * List cruise by name only
      *
      * @param string $token
      * @return Catorgy
@@ -150,17 +149,17 @@ class DestinationRepository
      *
      * @return branch
      */
-    public function update(Destination $destination, $params)
+    public function update(Cruise $cruise, $params)
     {
-        $destination->forceFill($this->formatParams($params, 'update'))->save();
-        $seo = SEO::where('object_id', $destination->id)->where('object_model', 'Destination')->first();
-        $seo->object_id = $destination->id;
+        $cruise->forceFill($this->formatParams($params, 'update'))->save();
+        $seo = SEO::where('object_id', $cruise->id)->where('object_model', 'Cruise')->first();
+        $seo->object_id = $cruise->id;
         $seo->object_model = $this->model;
-        $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $destination->name;
-        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $destination->description;
-        $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $destination->tmp_img;
+        $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $cruise->name;
+        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $cruise->overview;
+        $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $cruise->tmp_img;
         $seo->save();
-        return $destination;
+        return $cruise;
     }
 
     /**
@@ -169,9 +168,9 @@ class DestinationRepository
      * @param integer $id
      * @return bool|null
      */
-    public function delete(Destination $destination)
+    public function delete(Cruise $cruise)
     {
-        return $destination->delete();
+        return $cruise->delete();
     }
 
     /**

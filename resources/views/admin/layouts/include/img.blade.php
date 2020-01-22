@@ -169,12 +169,16 @@ $(document).on("click",".save-images-input",function() {
     }else{
         console.log($('img.selected'));
         var length = $('img.selected').length ;
-         for (let x = 0; x <= length ; x++ ) {
+
+            var myDiv = $('div[gallery-id="' + $($('img.selected')[0]).attr('input-id') + '"]');
+            myDiv.empty();
+
+         for (let x = 0; x <= length-1 ; x++ ) {
 
 
             const element = $('img.selected')[x];
-            console.log($(element).attr('input-id'));
-            var myDiv = $('div[gallery-id="' + $(element).attr('input-id') + '"]');
+            console.log(x);
+            // var myDiv = $('div[gallery-id="' + $(element).attr('input-id') + '"]');
             var inputName = myDiv.attr('input-name');
             myDiv.append(`
             <div class="col-lg-2 col-md-3 col-xs-4 ">
@@ -189,7 +193,7 @@ $(document).on("click",".save-images-input",function() {
             // myDiv.find( "img" ).attr("src",$(element).attr('img-src'));
             // myDiv.find( "#input-"+$(element).attr('input-id') ).val($(element).attr('img-id'));
         }
-        for (let x = 0; x <= length ; x++ ) {
+        for (let x = 0; x <= length-1 ; x++ ) {
             const element = $('img.selected')[x];
             $(element).removeClass('selected');
         }

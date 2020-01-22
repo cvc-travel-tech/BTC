@@ -2,29 +2,29 @@
 
 namespace App\Repositories;
 
-use App\Destination;
+use App\Sightseeing;
 use Illuminate\Validation\ValidationException;
 use App\Seo;
 
-class DestinationRepository
+class SightseeingRepository
 {
     private $data;
-    private $model = 'Destination';
+    private $model = 'Sightseeing';
 
     /**
      * Instantiate a new instance.
      *
      * @return void
      */
-    public function __construct(Destination $destination)
+    public function __construct(Sightseeing $sightseeing)
     {
-        $this->data = $destination;
+        $this->data = $sightseeing;
     }
 
     /**
      * Get todo query
      *
-     * @return Destination query
+     * @return Sightseeing query
      */
 
     public function getQuery()
@@ -36,7 +36,7 @@ class DestinationRepository
      * Find todo with given id or throw an error.
      *
      * @param integer $id
-     * @return Destination
+     * @return Sightseeing
      */
 
     public function findOrFail($slug)
@@ -52,7 +52,7 @@ class DestinationRepository
      * Find todo with given id or throw an error.
      *
      * @param integer $id
-     * @return Destination
+     * @return Sightseeing
      */
 
     public function find($id)
@@ -89,7 +89,7 @@ class DestinationRepository
      * Create a new todo.
      *
      * @param array $params
-     * @return Destination
+     * @return Sightseeing
      */
     public function create($params)
     {
@@ -116,9 +116,8 @@ class DestinationRepository
         $formatted = [
             'name' => isset($params['name']) ? $params['name'] : null,
             'description' => isset($params['description']) ? $params['description'] : null,
-            'tmp_img' => isset($params['tmp_img']) ? $params['tmp_img'] : null,
             'img' => isset($params['img']) ? $params['img'] : null,
-            'locations' => isset($params['locations']) ? $params['locations'] : null,
+            'destination_id' => isset($params['destination_id']) ? $params['destination_id'] : null,
         ];
         // if ($action === 'create') {
         //     $formatted['user_id'] = \Auth::user()->id;
@@ -130,7 +129,7 @@ class DestinationRepository
 
 
     /**
-     * List destination by name only
+     * List sightseeing by name only
      *
      * @param string $token
      * @return Catorgy
@@ -150,17 +149,17 @@ class DestinationRepository
      *
      * @return branch
      */
-    public function update(Destination $destination, $params)
+    public function update(Sightseeing $sightseeing, $params)
     {
-        $destination->forceFill($this->formatParams($params, 'update'))->save();
-        $seo = SEO::where('object_id', $destination->id)->where('object_model', 'Destination')->first();
-        $seo->object_id = $destination->id;
+        $sightseeing->forceFill($this->formatParams($params, 'update'))->save();
+        $seo = SEO::where('object_id', $sightseeing->id)->where('object_model', 'Sightseeing')->first();
+        $seo->object_id = $sightseeing->id;
         $seo->object_model = $this->model;
-        $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $destination->name;
-        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $destination->description;
-        $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $destination->tmp_img;
+        $seo->seo_title = isset($params['seo_title']) ? $params['seo_title'] : $sightseeing->name;
+        $seo->seo_desc = isset($params['seo_desc']) ?  $params['seo_desc'] : $sightseeing->description;
+        $seo->seo_image = isset($params['seo_image']) ?  $params['seo_image'] : $sightseeing->tmp_img;
         $seo->save();
-        return $destination;
+        return $sightseeing;
     }
 
     /**
@@ -169,9 +168,9 @@ class DestinationRepository
      * @param integer $id
      * @return bool|null
      */
-    public function delete(Destination $destination)
+    public function delete(Sightseeing $sightseeing)
     {
-        return $destination->delete();
+        return $sightseeing->delete();
     }
 
     /**

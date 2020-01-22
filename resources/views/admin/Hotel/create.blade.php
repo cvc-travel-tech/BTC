@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-{!! Form::open(['route' => 'admin.destination.store', 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'novalidate'=>'novalidate']) !!}
+{!! Form::open(['route' => 'admin.hotel.store', 'files' => true , 'class' => 'form-horizontal form-validate-jquery' , 'novalidate'=>'novalidate']) !!}
 
 <div class="container-detached">
     <div class="content-detached">
@@ -24,7 +24,7 @@
                     <fieldset class="content-group">
 
                         @foreach ($form as $key => $attributes )
-                        @if ($key != 'tmp_img')
+                        @if ($key != 'img')
                             {!! getInput($key , null, $attributes ) !!}
                         @endif
                         @endforeach
@@ -81,7 +81,7 @@
                 <div class="category-content">
                         <div class="has-feedback has-feedback-left">
                                 @foreach ($form as $key => $attributes )
-                                @if ($key == 'tmp_img')
+                                @if ($key == 'img')
                                     {!! getInput($key , null, $attributes ) !!}
                                 @endif
                                 @endforeach
@@ -127,8 +127,7 @@
 	<script type="text/javascript" src="{{ asset('admin/js/plugins/uploaders/plupload/plupload.full.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/plugins/uploaders/plupload/plupload.queue.min.js')}}"></script>
     	<script type="text/javascript" src="{{ asset('admin/js/plugins/media/fancybox.min.js')}}"></script>
-	<script type="text/javascript" src="{{ asset('admin/js/core/libraries/jquery_ui/interactions.min.js')}}"></script>
-	<script type="text/javascript" src="{{ asset('admin/js/plugins/forms/selects/select2.min.js')}}"></script>
+
 
     @include('admin.layouts.include.img')
 

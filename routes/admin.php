@@ -20,6 +20,9 @@ Route::group(['prefix' => 'backend', 'as' => 'admin.'], function () {
     Route::group(['middleware' => 'admin:admin'], function () {
         Route::get('/', "HomeController@index")->name('home');
         Route::resource('destination', 'DestinationController');
+        Route::resource('sightseeing', 'SightseeingController');
+        Route::resource('cruise', 'CruiseController');
+        Route::resource('hotel', 'HotelController');
         Route::resource('setting', 'SettingController');
         Route::get('products/data', 'DestinationController@reposList')->name('product.data');
         Route::any('logout', 'AdminAuthController@Logout')->name('logout');

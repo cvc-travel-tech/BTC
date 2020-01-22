@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\DestinationDatatables;
 use App\Http\Controllers\Controller;
 use App\Repositories\DestinationRepository;
-use App\Http\Requests\DestinationRequest;
+use App\Http\Requests\LocationRequest;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
@@ -128,7 +128,7 @@ class DestinationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DestinationRequest $request)
+    public function store(LocationRequest $request)
     {
         //
         $data = $this->repo->create($request->all());
@@ -152,11 +152,10 @@ class DestinationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
-
-        $rows = $this->repo->findOrFail($id);
+        $rows = $this->repo->findOrFail($slug);
         $rows['seo'] = $rows->getSeoMeta();
         $form = [
             'name' => [

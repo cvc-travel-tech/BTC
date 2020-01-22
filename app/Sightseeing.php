@@ -3,34 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Hotel extends Model
+class Sightseeing extends Model implements HasMedia
 {
-    use HasSlug;
+    use HasMediaTrait, HasSlug;
 
-    protected $table = 'hotels';
+    protected $table = 'sightseeings';
     public $timestamps = true;
-    protected $fillable = array('name', 'images', 'email', 'phone', 'overview', 'destination_id');
-    protected $casts = [
-        'images' => 'array', // Will convarted to (Array)
-    ];
-
-    public function Destination()
-    {
-        return $this->belongsTo('App\Destination', 'destination_id');
-    }
-
-    public function Packages()
-    {
-        return $this->belongsToMany('App\Package', 'package_id');
-    }
-
+    protected $fillable = array('description', 'name',  'img', 'destination_id');
+    // protected $casts = [
+    //     'locations' => 'array', // Will convarted to (Array)
+    // ];
 
     public function Img()
     {
-        return $this->belongsTo('App\Images', 'images');
+        return $this->belongsTo('App\Images', 'img');
     }
 
     /**
@@ -57,8 +48,7 @@ class Hotel extends Model
 
     public function getSeoMeta()
     {
-        $meta = SEO::where('object_id', $this->id)->where('object_model', 'Hotel')->first();
-
+        $meta = SEO::where('object_id', $this->id)->where('object_model', 'Sightseeing')->first();
         if (!empty($meta)) {
             $meta = $meta->toArray();
         }
