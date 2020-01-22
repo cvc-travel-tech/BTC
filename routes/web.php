@@ -15,6 +15,14 @@ Route::get('/', 'FrontendController@index');
 Route::get('/about', 'FrontendController@about');
 Route::get('/blog', 'FrontendController@blog');
 
+
+Route::get('/travel-free', 'FrontendController@travel_free');
+Route::get('/family-package', 'FrontendController@family_package');
+Route::get('/contact', 'FrontendController@contact');
+
+
+
+
 Route::get('example', ['example' => 'exampl@index', 'as' => 'exampl.index']);
 
 Auth::routes();
