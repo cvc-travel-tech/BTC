@@ -34,6 +34,8 @@ class FormServiceProvider extends ServiceProvider
         Form::component('img', 'admin.Form.img', ['name', 'value' => null, 'attributes' => []]);
         Form::component('bsSelect', 'admin.Form.select', ['name', 'value' => null, 'attributes' => []]);
         Form::component('multiImg', 'admin.Form.multiImg', ['name', 'value' => null, 'attributes' => []]);
+
+        //json
         Form::component('json', 'admin.Form.json', ['name', 'inputs'  => [], 'value' => null, 'attributes' => []]);
         Form::component('jsonBsText', 'admin.Form.json-form.text', ['jsonName', 'inputName', 'value' => null, 'attributes' => [], 'value_key' => null]);
         Form::component('jsonImg', 'admin.Form.json-form.img', ['jsonName', 'inputName', 'value' => null, 'attributes' => [], 'value_key' => null]);
