@@ -50,7 +50,7 @@
                         </div>
                         <div class="ed-com-t1-right">
                             <ul>
-                                <li><a href="login.html">Login</a>
+                                <li><a href="{{ url('login') }}">Login</a>
 
                                 </li>
 

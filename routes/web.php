@@ -20,6 +20,7 @@ Route::get('/travel-free', 'FrontendController@travel_free');
 Route::get('/family-package', 'FrontendController@family_package');
 Route::get('/contact', 'FrontendController@contact');
 
+Route::get('/logiin', 'FrontendController@logiin');
 
 
 

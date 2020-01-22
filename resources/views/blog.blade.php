@@ -36,7 +36,7 @@
                 <div class="rows">
 
 
-
+@foreach($blogs as $blog) 
 
                     <div class="posts">
                         <div class="col-md-6 col-sm-6 col-xs-12"> <img src="{{ asset('frontend/images/hatshepsuttemple.jpg') }}" />
@@ -44,21 +44,14 @@
 
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <h3>Solar Alignment on Hatshepsut's Temple</h3>
+                            <h3>{{ $blog->title }}</h3>
                             <h5><span class="post_author">Author: Johnson</span><span class="post_date">Date: 12th
                                     May,2016</span><span class="post_city">City: Illunois</span></h5>
-                            <p>On the 6th of January 2020, a lot of people gathered in front of Queen Hatshepsut's temple ,at El Dier Elbahary in Luxor's west bank, to witness the sun aligning on the sanctuary of the temple. This fascinating phenomenon indicates
-                                the intelligence of Ancient Egyptians architectural and astronomical knowledge. It can help us deeply understand their beliefs; in addition it is an excellent example of the environmental-friendly constructions depending
-                                on its aligning with sun rays. Furthermore, the event contributes in reviving tourism in the area and educating crowds of people about the glorious ancient civilization. It is understood that Ancient Egyptians celebrated
-                                two major festivals every year; the first of goddess Hathour, goddess of motherhood and love, on the 6th of January. The second is god Horus's, the sky god, on the 9th of December. This is why Ancient Egyptians architects
-                                aligned most of their temples and shrines to line up with such important religious occasions. Worthwhile, the funerary temple of Queen Hatshepsut is considered one of the most beautiful buildings in Egypt. It owns a dramatic
-                                location where the temple is beautifully blended with the cliffs from which it was partially cut. It was designed by the courtier Senenmut who is said to be Hatshepsut's lover as well.
-                            </p>
+                            <p>{!! $blog->description !!}</p>
                             <a href="blog-inner.html" class="link-btn">Read more</a>
                         </div>
                     </div>
-
-
+@endforeach
 
 
            
