@@ -93,7 +93,7 @@
     <script>
         var typed = new Typed('#type-text', {
             // Waits 1000ms after typing "First"
-            strings:  {!!$titles!!},
+            strings: @isset($titles) {!!$titles!!} @endisset,
             /**
              * @property {number} typeSpeed type speed in milliseconds
              */

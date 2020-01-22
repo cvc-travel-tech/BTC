@@ -34,6 +34,7 @@
         <div class=" tourz-hom-ser">
 
             <ul>
+            @if($features != '')
                 @foreach ($features as $feature)
                     <li>
                         <a href="#"> <img src="{{ getImg($feature['icon'])}}" alt="">
@@ -41,6 +42,7 @@
                         </a>
                     </li>
                 @endforeach
+            @endif
 
 
                 {{-- <li>
