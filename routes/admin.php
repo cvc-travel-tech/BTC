@@ -22,6 +22,7 @@ Route::group(['prefix' => 'backend', 'as' => 'admin.'], function () {
         Route::resource('destination', 'DestinationController');
         Route::resource('sightseeing', 'SightseeingController');
         Route::resource('cruise', 'CruiseController');
+        Route::resource('package', 'PackageController');
         Route::resource('hotel', 'HotelController');
         Route::resource('setting', 'SettingController');
         Route::get('products/data', 'DestinationController@reposList')->name('product.data');

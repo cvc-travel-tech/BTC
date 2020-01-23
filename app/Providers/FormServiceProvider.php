@@ -42,5 +42,6 @@ class FormServiceProvider extends ServiceProvider
         Form::component('jsonCkeditor', 'admin.Form.json-form.ckeditor', ['jsonName', 'inputName', 'value' => null, 'attributes' => [], 'value_key' => null]);
         Form::component('jsonBsTextarea', 'admin.Form.json-form.textarea', ['jsonName', 'inputName', 'value' => null, 'attributes' => [], 'value_key' => null]);
         Form::component('jsonBsNumber', 'admin.Form.json-form.number', ['jsonName', 'inputName', 'value' => null, 'attributes' => [], 'value_key' => null]);
+        Form::component('jsonDatepicker', 'admin.Form.json-form.datepicker', ['jsonName', 'inputName', 'value' => null, 'attributes' => [], 'value_key' => null]);
     }
 }

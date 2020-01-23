@@ -799,8 +799,27 @@ $(function() {
                          .closest(".table-json")
                          .find(".g-items tr:last-child")
                          .before(extra_html);
+                         $('.daterange-basic').daterangepicker({
+                            applyClass: 'bg-slate-600',
+                            cancelClass: 'btn-default',
+                            opens: 'left',
+                            locale: {
+                                direction: 'rtl'
+                            }
+                        });
                      CKEDITOR.replace("ckeditor-" + number);
+
+                                      // Basic initialization
+             
+                    $( "#datepicker-" + number ).datepicker({
+                        // dateFormat: 'dd/mm/yyyy',
+                        dateFormat: 'd/m/Y',
+                        changeMonth: true,
+                        changeYear: true});
                  });
+
+
+                 
 
                  // Small
                  $(".select2").select2({

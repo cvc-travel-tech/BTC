@@ -29,3 +29,5 @@ Route::get('example', ['example' => 'exampl@index', 'as' => 'exampl.index']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Package/{slug}', 'FrontendController@Packages_details');
+

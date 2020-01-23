@@ -43,6 +43,8 @@ if (!function_exists('getJsonInput')) {
             return Form::jsonBsText($jsonName, $inputName, $value, $attributes, $value_key);
         else if ($attributes['type'] == 'ckeditor')
             return Form::jsonCkeditor($jsonName, $inputName, $value, $attributes, $value_key);
+        else if ($attributes['type'] == 'datepicker')
+            return Form::jsonDatepicker($jsonName, $inputName, $value, $attributes, $value_key);
         else if ($attributes['type'] == 'img')
             return Form::jsonImg($jsonName, $inputName, $value, $attributes, $value_key);
         else if ($attributes['type'] == 'textarea')
@@ -59,6 +61,7 @@ if (!function_exists('getImg')) {
             # code...
             return asset('storage/tmp/uploads/') . "/" . $size . "/" . Images::find($id)->file_path;
         } else {
+
             return asset('storage/tmp/uploads/')  . "/" . Images::find($id)->file_path;
         }
     }

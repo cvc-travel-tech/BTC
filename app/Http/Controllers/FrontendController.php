@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\BlogRepository;
+use App\Repositories\PackageRepository;
 
 class FrontendController extends Controller
 {
     private $Blog;
+    private $Package;
 
         /**
      * Instantiate a new controller instance.
      *
      * @return void
      */
-    public function __construct(BlogRepository $Blog)
+    public function __construct(BlogRepository $Blog , PackageRepository $Package)
     {
         $this->Blog = $Blog;
+        $this->Package = $Package;
     }
 
     public function index()
@@ -65,6 +68,13 @@ class FrontendController extends Controller
     {
         return view('login');
 
+    } 
+    
+    public function Packages_details($slug)
+    {
+        $row = $this->Package->findOrFail($slug);
+        
+        return view('Packages_details', compact( 'row'));
     } 
     
 
